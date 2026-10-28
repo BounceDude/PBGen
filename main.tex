@@ -1,0 +1,320 @@
+% beautybook — decorative book class with coloured theorem boxes and a
+% two-tone chapter-heading treatment, adapted from the CTAN/GitHub
+% BeautyLaTeX/latex-template package.
+%
+% Simplified from upstream: the upstream ships four cover styles (cn/en/
+% enfig/birkar) and a 36MB set of photographic chapter-corner decorations
+% (inner_pics/titleimages/, Pixabay-style stock photos with no separate
+% licence grant of their own). This starter uses ONLY the text-only "en"
+% cover (no background photo) and a small self-drawn abstract mark
+% (inner_pics/beautybook-mark.png, original artwork made for this starter)
+% in place of every upstream photo, so nothing here carries an unverified
+% third-party image licence.
+\documentclass[lang=en,12pt]{beautybook}
+\usepackage{ctex}
+\usepackage{url}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{times}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{microtype}
+\RequirePackage[round]{natbib}
+
+\definecolor{coverbgcolor}{HTML}{e0e0e0}
+\definecolor{coverfgcolor}{HTML}{1f3134}
+\definecolor{coverbar}{HTML}{7c9092}
+\definecolor{bottomcolor}{HTML}{2c4f54}
+\definecolor{nuanbai}{HTML}{f5f5f5}
+\coverstyle={
+    cover-choose=en,
+}
+\mathstyle={
+    math-font=plain,
+}
+
+\mynewtheorem{
+    defi={\textbf{Definition}}[section]{interior style={left color=ReD!8,right color=ReD!5!CyaN!50}, borderline west={1.5mm}{0mm}{ReD}},
+    thm={\textbf{Theorem}}[section]{interior style={left color=CyaN!80!black!20,right color=CyaN!80!black!15!CyaN!50}, borderline west={1.5mm}{0mm}{CyaN!80!black}},
+    lem={\textbf{Lemma}}[section]{interior style={left color=BluE!8,right color=BluE!5!CyaN!50}, borderline west={1.5mm}{0mm}{BluE}},
+    prop={\textbf{Proposition}}[section]{interior style={left color=OrangE!8,right color=OrangE!5!CyaN!50}, borderline west={1.5mm}{0mm}{OrangE}},
+    exam={\textbf{Example}}[chapter]{interior style={left color=DarkGreen!8,right color=DarkGreen!5!CyaN!50}, borderline west={1.5mm}{0mm}{DarkGreen}},
+}
+\newtheorem*{remark}{\textbf{Remark}}
+
+\begin{document}
+\thispagestyle{empty}
+\title{An Introduction to Legal Intelligence}
+\subtitle{A first course}
+\edition{First Edition}
+\bookseries{}
+\author{Yanqing An}
+\pressname{beautybook}
+\presslogo{inner_pics/beautybook-mark.png}
+\makecover
+
+\makeatletter
+\definecolor{bg}{HTML}{e0e0e0}
+\definecolor{fg}{HTML}{2c4f54}
+\colorlet{outermarginbgcolor}{bg}
+\colorlet{outermarginfgcolor}{fg}
+\oddoutermargin{\sffamily \leftmark}
+\evenoutermargin{\sffamily\@title}
+\chapimage{inner_pics/beautybook-mark.png}
+\makeatother
+
+\colorlet{framegolden}{fg}
+\colorlet{framegray}{bg!50}
+
+\frontmatter
+\pagenumbering{Roman}
+
+{\thispagestyle{empty}
+\chapter*{Preface}
+This short book collects the definitions and first theorems of graph
+colouring, aimed at a reader who has seen basic graph theory but not yet
+chromatic numbers.
+
+\hfill
+\begin{tabular}{lr}
+    &-- Grace Hopper\\
+    & 2026
+\end{tabular}
+
+
+We are on the right scientific path and moving forward. I hope this book will be of help to you.
+
+\hfill
+\begin{tabular}{lr}
+    &-- Yanqing An\\
+    & 2026
+\end{tabular}
+\clearpage}
+
+\thispagestyle{empty}
+\tableofcontents\let\cleardoublepage\clearpage
+
+\mainmatter
+\pagenumbering{arabic}
+
+\partabstract{\hspace*{2em} The first part develops the basic vocabulary
+of Legal Intelligence.第一部分介绍法律智能的基本概念。}
+\part{法律智能}
+
+\chapter{概述}
+
+\section{Definitions}
+
+
+\chapter{法条预测到文书生成}
+
+\section{基于神经网络的法条预测}
+
+
+\section{基于SVM的刑事法律判决预测}
+
+
+\section{基于预训练模型的类案检索}
+
+
+\chapter{神经网络、SVM与预训练}
+
+\section{}
+
+\chapter{大模型时代下的法律智能}
+
+
+\partabstract{\hspace*{2em} The first part develops the basic vocabulary
+of graph colouring and proves the elementary upper bounds every later
+result builds on.}
+\part{相关技术}
+
+\chapter{机器学习与神经网络}
+
+\chapter{SVM}
+\chapter{cnn, rnn, lstm,seq2seq}
+\section{GAN}
+判别器
+
+生成器
+\chapter{Transfomer}
+\section{positionencoding}
+\section{ffn}
+\section{multiheadattention}
+\subsection{self attention}
+\subsection{cross attention}
+\subsection{casual attention}
+\section{encoder}
+\section{decoder}
+
+
+模拟器
+
+\chapter{BERT}
+\chapter{Large Language Models}
+
+\section{Definitions}
+
+\partabstract{\hspace*{2em} The first part develops the basic vocabulary
+of graph colouring and proves the elementary upper bounds every later
+result builds on.}
+\part{法律智能技术与应用}
+
+\chapter{现状}
+市面上有大量的法律工具，包括中国裁判文书网~\footnote{\url{https://wenshu.court.gov.cn/}}、北大法宝~\footnote{\url{https://www.pkulaw.com/}}等案件检索数据库,以及法小飞~\footnote{\url{https://sf.xfyun.cn/services/IFlyLegal}}、Fabao AI~\footnote{\url{https://www.fabao.law/}}等插件小程序。
+
+中国法律智能技术评测(Challenge of AI in Law, CAIL)~\footnote{\url{http://cail.cipsc.org.cn/}}从2018年举办至今，提供了部分应用场景。
+
+\chapter{法律判决预测}
+
+\section{简介}
+刑事、民事、可解释、多被告
+
+\section{Definitions}
+
+\chapter{类案检索}
+
+\section{简介}
+相似案例匹配、类案检索、对话式类案检索
+
+\section{Definitions}
+Generally speaking, the relevance judgment task in our study is to determine the relevance of the candidate case, given a query case.[1]
+Legal case retrieval is a specialized IR task aiming to retrieve supporting cases given a query case.[3]
+% Given a query case, our task is to retrieve relevant cases from a pool of candidate cases. $To be specific, given a query case 𝑞 and a set of candidate cases 𝐶 = {𝑐1, 𝑐2, ..., 𝑐𝑀 }, 𝑀 ∈ N + , the task is to identify all relevant cases 𝑆 = {𝑟1, 𝑟2, ..., 𝑟𝑘 |𝑟𝑖 ∈ 𝐶 ∧𝑠𝑢𝑝𝑝𝑜𝑟𝑡(𝑟𝑖 , 𝑞)}, where 𝑠𝑢𝑝𝑝𝑜𝑟𝑡(𝑠𝑖 , 𝑞) denotes case 𝑟𝑖 is a relevant case supporting query case 𝑞 in at least one aspect.[4]$
+
+\section{Challenges}
+Long：
+Both the query and candidate cases involve extreme long texts. For example, cases in COLIEE 2019 Task 1 contain around 3,000 words on average.[5]
+Legal case documents are typically long text sequences with intrinsic writing logic. Case documents usually consist of five parts: Procedure, Fact, Reasoning, Decision, and Tail.[2]
+Although pre-trained language models (PLMs) have achieved outstanding performance in various Natural Language Processing (NLP) and IR tasks, they are challenged in legal case retrieval given the length limitation. [7]
+Retrieval: some shortcomings of general IR in meeting the needs arising from the legal domain.[6]
+The concept of relevance in the legal domain is quite different from that in general search. Cases without key legal elements or with different key legal elements may lead to different judgments.[2]
+the target users: legal workers with professional knowledge in law. Compared with web search engines, legal databases (e.g., Westlaw) are preferred considering the data authority and legal effect. The retrieved results are mostly semi-structured case documents rather than web pages. [3]
+Most existing models retrieve legal cases through lexical or semantic matching between two case documents. However, without domain knowledge, a model cannot understand the relevance in the legal domain comprehensively.[7]
+Relevance：the definition of legal relevance is beyond topical relevance, involving similar legal issues, facts, consequences, etc.[3]
+Dataset
+Collecting a large dataset for this task can be challenging if not impossible. (1)downloading large-scale legal documents is restricted in many law systems. (2)it is quite expensive to obtain accurate relevance judgments since it requires expert knowledge in the legal domain.[5]
+
+\section{Structure-based Pre-trained Language Model}
+SAILER MUSER
+预训练模型表征 CaseEncoder: A Knowledge-enhanced Pre-trained Model for Legal Case Encoding. 
+预训练模型 BERT-PLI: Modeling Paragraph-Level Interactions for Legal Case Retrieval. 
+数据集 LeCaRD: A Legal Case Retrieval Dataset for Chinese Law System. 
+结构信息 Incorporating Structural Information into Legal Case Retrieval. 
+结构信息 SAILER: Structure-aware Pre-trained Language Model for Legal Case Retrieval. 
+
+\section{Legal Case Retrieval with behaviors}
+用户决策过程 Investigating the Influence of Legal Case Retrieval Systems on Users' Decision Process.
+用户子主题标注 Result Diversification for Legal case Retrieval. 
+用户意图分类 An Intent Taxonomy of Legal Case Retrieval. 
+用户判决相关性 Understanding Relevance Judgments in Legal Case Retrieval. 
+用户行为 Investigating User Behavior in Legal Case Retrieval. 
+
+\section{Legal Case Retrieval with agents}
+生成对话问题 Leveraging Event Schema to Ask Clarifying Questions for Conversational Legal Case Retrieval. 
+对话智能体 Investigating Conversational Agent Action in Legal Case Retrieval. 
+对话智能体 Query Generation and Buffer Mechanism: Towards a better conversational agent for legal case retrieval. 
+对话式 Conversational vs Traditional: Comparing Search Behavior and Outcome in Legal Case Retrieval. 
+
+
+\chapter{律师画像}
+
+\section{Definitions}
+
+\begin{defi}[Proficiency Assessment]
+\label{def:assessment}
+Given a set of lawyers $L = \left\{l_{1}, l_{2}, \ldots, l_{N}\right\}$, a set of cases $C = \left\{c_{1}, c_{2}, \ldots, c_{M}\right\}$, and a set of domains $F = \left\{f_{1}, f_{2}, \ldots, f_{K}\right\}$, the goal is to identify the proficiencies $h^l \in(0,1)^{1 \times K}$ of lawyers in each domain.
+\end{defi}
+Definition~\ref{def:assessment} is the
+能力评估~\citet{an2021lawyerpan}
+\emph{proper $k$-colouring}
+
+\chapter{庭审观点生成}
+
+\section{Definitions}
+
+\chapter{法律问答}
+
+\section{Definitions}
+
+\partabstract{\hspace*{2em} The first part develops the basic vocabulary
+of graph colouring and proves the elementary upper bounds every later
+result builds on.}
+\part{未来发展}
+
+\chapter{应用场景}
+
+\section{Definitions}
+
+\chapter{未来方向}
+
+\section{Definitions}
+
+
+
+\partabstract{\hspace*{2em} The first part develops the basic vocabulary
+of graph colouring and proves the elementary upper bounds every later
+result builds on.}
+\part{Foundations}
+
+\chapter{Proper Colourings}
+\label{ch:colourings}
+
+\section{Definitions}
+
+
+
+\begin{defi}[Chromatic number]
+\label{def:chromatic}
+The \emph{chromatic number} $\chi(G)$ is the least $k$ for which $G$
+admits a proper $k$-colouring.
+\end{defi}
+
+\begin{thm}[Greedy bound]
+\label{thm:greedy-bound}
+For any graph $G$ with maximum degree $\Delta$, $\chi(G) \leq \Delta + 1$.
+\end{thm}
+
+\begin{proof}
+Order the vertices arbitrarily and colour them in that order, at each step
+assigning the least colour not used by an already-coloured neighbour.
+Each vertex has at most $\Delta$ neighbours, so at most $\Delta$ colours
+are forbidden, leaving one of the first $\Delta + 1$ colours free.
+\end{proof}
+
+\begin{exam}[An odd cycle]
+\label{exam:cycle}
+The cycle $C_5$ has $\Delta = 2$, so Theorem~\ref{thm:greedy-bound} gives
+$\chi(C_5) \leq 3$. In fact $\chi(C_5) = 3$: two colours are never enough
+for a cycle of odd length, since the colours would have to alternate and
+cannot close up consistently.
+\end{exam}
+
+\begin{lem}[Bipartite graphs]
+\label{lem:bipartite}
+A graph $G$ is bipartite if and only if $\chi(G) \leq 2$.
+\end{lem}
+
+\begin{remark}
+Lemma~\ref{lem:bipartite} makes $2$-colourability and bipartiteness the
+same question, and both can be checked in linear time by breadth-first
+search.
+\end{remark}
+
+\chapter{The Four Colour Theorem}
+\label{ch:four-colour}
+
+\begin{prop}[Planar upper bound]
+\label{prop:planar-bound}
+Every planar graph satisfies $\chi(G) \leq 4$.
+\end{prop}
+
+Proposition~\ref{prop:planar-bound} is the Four Colour Theorem, first
+proved by computer-assisted case analysis
+by~\citet{appel1977four}, and later given a more tractable
+proof by~\citet{robertson1997four}.
+
+\input{paper/1_introduction}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
